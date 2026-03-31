@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load json_trans %}
+
+{% block title %}{% t "Добавить психолога" %}{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h2>{% t "Добавить психолога" %}</h2>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% for error in field.errors %}
+                    <p class="error">{% t error %}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <p class="error">{% t error %}</p>
+        {% endfor %}
+        <button type="submit">{% t "Сохранить" %}</button>
+    </form>
+</section>
+{% endblock %}

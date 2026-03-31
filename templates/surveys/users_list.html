@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load json_trans %}
+
+{% block title %}{% t "Все пользователи" %}{% endblock %}
+
+{% block content %}
+<div class="stats-container" style="max-width: 100%; width: 98%; margin: 0 auto;">
+    <section class="card stats-main-card">
+        <h2 class="stats-title">{{ title_psychologists }}</h2>
+        <div class="table-responsive">
+            <table class="risk-table users-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50px;">№</th>
+                        <th style="min-width: 200px;">{% t "ФИО" %}</th>
+                        <th style="min-width: 200px;">{% t "Email" %}</th>
+                        <th style="width: 120px;">{% t "Роль" %}</th>
+                        <th style="min-width: 300px;">{% t "Действия" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in staff_users %}
+                        <tr>
+                            <td style="text-align: center;">{{ forloop.counter }}</td>
+                            <td>{{ u.first_name|default:"-" }} {{ u.last_name|default:"" }}</td>
+                            <td>{{ u.email|default:"-" }}</td>
+                            <td>
+                                <span class="risk-badge" style="background: #3b82f6; color: white;">{% t "Психолог" %}</span>
+                            </td>
+                            <td>
+                                <form method="post" style="display:flex; gap:6px; align-items:center;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="action" value="reset_password">
+                                    <input type="hidden" name="user_id" value="{{ u.id }}">
+                                    <input type="text" name="new_password" placeholder="{% t 'Новый пароль' %}" style="flex: 1; min-width: 120px;">
+                                    <button type="submit" class="button-link" style="padding: 6px 12px; font-size: 0.8rem; white-space: nowrap;">{% t "Сбросить" %}</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="card stats-main-card" style="margin-top: 30px;">
+        <h2 class="stats-title">{{ title_students }}</h2>
+        <div class="table-responsive">
+            <table class="risk-table users-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50px;">№</th>
+                        <th style="min-width: 200px;">{% t "ФИО" %}</th>
+                        <th style="min-width: 200px;">{% t "Email" %}</th>
+                        <th style="width: 180px;">{% t "Группа / Язык обучения" %}</th>
+                        <th style="min-width: 300px;">{% t "Действия" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in student_users %}
+                        <tr>
+                            <td style="text-align: center;">{{ forloop.counter }}</td>
+                            <td>{{ u.first_name|default:"-" }} {{ u.last_name|default:"" }}</td>
+                            <td>{{ u.email|default:"-" }}</td>
+                            <td style="text-align: center;">
+                                {% if u.student_profile %}
+                                    {{ u.student_profile.group_code }} / {{ u.student_profile.get_course_display|default:"-" }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>
+                                <form method="post" style="display:flex; gap:6px; align-items:center;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="action" value="reset_password">
+                                    <input type="hidden" name="user_id" value="{{ u.id }}">
+                                    <input type="text" name="new_password" placeholder="{% t 'Новый пароль' %}" style="flex: 1; min-width: 120px;">
+                                    <button type="submit" class="button-link" style="padding: 6px 12px; font-size: 0.8rem; white-space: nowrap;">{% t "Сбросить" %}</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<style>
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 15px;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        background: #fff;
+    }
+    .users-table {
+        min-width: 900px;
+        width: 100%;
+    }
+    .users-table th, .users-table td {
+        padding: 14px 18px !important;
+        vertical-align: middle;
+        border-bottom: 1px solid #f1f5f9;
+    }
+    .users-table thead th {
+        background: #f8fafc;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+</style>
+{% endblock %}

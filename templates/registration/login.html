@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load json_trans %}
+
+{% block title %}{% t "Вход" %}{% endblock %}
+
+{% block content %}
+<section class="card" style="max-width: 450px; margin: 0 auto;">
+    <h2>{% t "Вход" %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">{% t "E-mail" %}</label>
+            {{ form.username }}
+            <p class="hint">{% t "Введите e-mail, указанный при регистрации" %}</p>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">{% t "Пароль" %}</label>
+            {{ form.password }}
+        </div>
+        {% for error in form.non_field_errors %}
+            <p class="error">{% t error %}</p>
+        {% endfor %}
+        <button type="submit">{% t "Вход" %}</button>
+    </form>
+</section>
+{% endblock %}

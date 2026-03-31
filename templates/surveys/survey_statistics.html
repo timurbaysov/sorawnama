@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+{% load json_trans %}
+
+{% block title %}{% t "Статистика:" %} {{ survey.localized_title }}{% endblock %}
+
+{% block content %}
+<section class="stats-container">
+    <div class="card stats-main-card">
+        <h2 class="stats-title">{% t "Аналитика:" %} {{ survey.localized_title }}</h2>
+
+        <div class="stats-summary-grid">
+            <div class="stat-item">
+                <div class="stat-value">{{ total_students }}</div>
+                <div class="stat-label">{% t "Всего студентов" %}</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">{{ question_count }}</div>
+                <div class="stat-label">{% t "Вопросов в опросе" %}</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">{{ max_score_per_student }}</div>
+                <div class="stat-label">{% t "Максимум баллов" %}</div>
+            </div>
+        </div>
+
+        <div class="stats-tabs">
+            <a class="stats-tab {% if active_tab == 'completed' %}active{% endif %}" href="?tab=completed">{% t "Список прошедших студентов" %}</a>
+            <a class="stats-tab {% if active_tab == 'risk' %}active{% endif %}" href="?tab=risk&q={{ search_query|urlencode }}">{% t "Категория: красный" %}</a>
+        </div>
+
+        {% if active_tab == "completed" %}
+            <div class="tab-card">
+                <p class="tab-description">{% t "Все студенты, которые уже отправили ответы по этому опросу" %}</p>
+                {% if students_completed %}
+                    <div class="risk-table-wrapper">
+                        <table class="risk-table">
+                            <thead>
+                                <tr>
+                                    <th>{% t "ФИО Студента" %}</th>
+                                    <th>{% t "Группа / Язык обучения" %}</th>
+                                    <th>{% t "Баллы" %}</th>
+                                    <th>{% t "Максимум" %}</th>
+                                    <th>{% t "Категория" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in students_completed %}
+                                    <tr>
+                                        <td class="student-name"><a href="{% url 'survey_student_answers' survey.id item.student.id %}">{{ item.student.user.get_full_name|default:item.student.user.username }}</a></td>
+                                        <td class="student-info">{{ item.student.group_code }} / {{ item.study_language }}</td>
+                                        <td>{{ item.total_score }}</td>
+                                        <td>{{ item.max_score }}</td>
+                                        <td>{{ item.category_label }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="no-risk-box">{% t "Пока никто не прошёл этот опрос." %}</div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if active_tab == "risk" %}
+            <div class="tab-card">
+                <p class="tab-description">{% t "Студенты с красной категорией (0-50% от максимума)" %}</p>
+                <form method="get" class="search-form">
+                    <input type="hidden" name="tab" value="risk">
+                    <input type="text" name="q" value="{{ search_query }}" placeholder="{% t 'Поиск студента (ФИО, логин, группа)' %}" class="search-input">
+                    <button type="submit" class="button-link search-button">{% t "Поиск" %}</button>
+                </form>
+                {% if students_in_red_category %}
+                    <div class="risk-table-wrapper">
+                        <table class="risk-table">
+                            <thead>
+                                <tr>
+                                    <th>{% t "ФИО Студента" %}</th>
+                                    <th>{% t "Группа / Язык обучения" %}</th>
+                                    <th>{% t "Баллы" %}</th>
+                                    <th>{% t "Максимум" %}</th>
+                                    <th>{% t "Категория" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in students_in_red_category %}
+                                    <tr>
+                                        <td class="student-name"><a href="{% url 'survey_student_answers' survey.id item.student.id %}">{{ item.student.user.get_full_name|default:item.student.user.username }}</a></td>
+                                        <td class="student-info">{{ item.student.group_code }} / {{ item.study_language }}</td>
+                                        <td>{{ item.total_score }}</td>
+                                        <td>{{ item.max_score }}</td>
+                                        <td>{{ item.category_label }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="no-risk-box">{% t "Студенты красной категории не найдены." %}</div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if selected_student %}
+            <div class="tab-card" style="margin-top: 18px;">
+                <h3 style="margin-bottom: 12px;">{% t "Ответы студента" %}: {{ selected_student.user.get_full_name|default:selected_student.user.username }}</h3>
+                {% if selected_student_answers %}
+                    <div class="risk-table-wrapper">
+                        <table class="risk-table">
+                            <thead>
+                                <tr>
+                                    <th>{% t "Вопрос" %}</th>
+                                    <th>{% t "Выбранный ответ" %}</th>
+                                    <th>{% t "Баллы" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ans in selected_student_answers %}
+                                    <tr>
+                                        <td>{{ ans.question_text }}</td>
+                                        <td>{{ ans.option_text }}</td>
+                                        <td>{{ ans.score }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="no-risk-box">{% t "Ответов по этому студенту не найдено." %}</div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<style>
+    .stats-container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .stats-main-card {
+        padding: 40px !important;
+        border: 1px solid #e2e8f0;
+    }
+    .stats-title {
+        font-size: 1.6rem !important;
+        color: #1e293b;
+        margin-bottom: 30px !important;
+        text-align: center;
+    }
+    .stats-summary-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .stat-item {
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid #e2e8f0;
+    }
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #10b981;
+    }
+    .stat-label {
+        font-size: 0.9rem;
+        color: #64748b;
+        font-weight: 600;
+        margin-top: 5px;
+    }
+    .stats-tabs {
+        display: flex;
+        gap: 12px;
+        margin: 24px 0 18px 0;
+        flex-wrap: wrap;
+    }
+    .stats-tab {
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-weight: 700;
+        color: #475569;
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+    }
+    .stats-tab:hover {
+        color: #0f172a;
+        background: #e2e8f0;
+    }
+    .stats-tab.active {
+        color: white;
+        background: #10b981;
+        border-color: #10b981;
+    }
+    .tab-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 18px;
+        background: white;
+    }
+    .tab-description {
+        color: #64748b;
+        margin-bottom: 14px;
+    }
+    .btn-show-risk {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 12px 30px !important;
+        background: #ef4444 !important;
+        color: white !important;
+        border-radius: 8px !important;
+        font-weight: 700 !important;
+        text-decoration: none;
+    }
+    .btn-show-risk:hover {
+        background: #dc2626 !important;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+    }
+    .risk-table-wrapper {
+        margin-top: 8px;
+        overflow-x: auto;
+    }
+    .risk-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+    .risk-table th {
+        padding: 12px 15px;
+        border-bottom: 2px solid #e2e8f0;
+        color: #64748b;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+    .risk-table td {
+        padding: 15px;
+        border-bottom: 1px solid #f1f5f9;
+    }
+    .student-name {
+        font-weight: 700;
+        color: #1e293b;
+    }
+    .student-name a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .student-name a:hover {
+        color: #10b981;
+    }
+    .student-info {
+        color: #64748b;
+        font-size: 0.9rem;
+    }
+    .no-risk-box {
+        background: #f0fdf4;
+        color: #166534;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 600;
+        border: 1px solid #dcfce7;
+    }
+    .btn-hide-risk {
+        display: block;
+        width: fit-content;
+        margin: 15px auto 0;
+        color: #64748b;
+        font-size: 0.9rem;
+        text-decoration: underline;
+    }
+    @media (max-width: 900px) {
+        .stats-main-card {
+            padding: 24px !important;
+        }
+        .stats-summary-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+    }
+    @media (max-width: 640px) {
+        .stats-title {
+            font-size: 1.35rem !important;
+            line-height: 1.3;
+        }
+        .risk-table th,
+        .risk-table td {
+            padding: 10px;
+            font-size: 0.82rem;
+        }
+        .stats-tab {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+{% endblock %}

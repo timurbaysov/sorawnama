@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load json_trans %}
+
+{% block title %}{% t "Профиль" %}{% endblock %}
+
+{% block content %}
+<section class="card" style="max-width: 600px; margin: 0 auto;">
+    <h2>{% t "Мой профиль" %}</h2>
+    <p><strong>{% t "Имя пользователя:" %}</strong> {{ user.username }}</p>
+    <p><strong>{% t "Email:" %}</strong> {{ user.email }}</p>
+    
+    {% if student_profile %}
+        <h3 style="margin-top:20px;">{% t "Данные студента" %}</h3>
+        <p><strong>{% t "Шифр группы:" %}</strong> {{ student_profile.group_code }}</p>
+        <p><strong>{% t "Язык обучения:" %}</strong> {{ student_profile.get_course_display|default:"-" }}</p>
+    {% endif %}
+
+    {% if user.psychologist_profile %}
+        <p style="margin-top:20px; color: var(--clr-primary); font-weight:bold;">
+            {% t "Вы вошли как психолог" %}
+        </p>
+    {% endif %}
+    {% if user.is_superuser %}
+        <p style="margin-top:20px; color: var(--clr-red); font-weight:bold;">
+            {% t "Вы вошли как суперадмин" %}
+        </p>
+    {% endif %}
+    <form action="{% url 'logout' %}" method="post" style="margin-top:24px;">
+        {% csrf_token %}
+        <button type="submit" class="btn">{% t "Выход" %}</button>
+    </form>
+</section>
+{% endblock %}

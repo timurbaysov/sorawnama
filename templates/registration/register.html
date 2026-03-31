@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load json_trans %}
+
+{% block title %}{% t "Регистрация студента" %}{% endblock %}
+
+{% block content %}
+<section class="card" style="max-width: 600px; margin: 0 auto;">
+    <h2>{% t "Регистрация студента" %}</h2>
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="{{ form.first_name.id_for_label }}">{% t "Имя" %}</label>
+                {{ form.first_name }}
+                {% for error in form.first_name.errors %}
+                    <p class="error">{% t error %}</p>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.last_name.id_for_label }}">{% t "Фамилия" %}</label>
+                {{ form.last_name }}
+                {% for error in form.last_name.errors %}
+                    <p class="error">{% t error %}</p>
+                {% endfor %}
+            </div>
+
+            <div class="form-group full-width">
+                <label for="{{ form.email.id_for_label }}">{% t "E-mail" %}</label>
+                {{ form.email }}
+                {% for error in form.email.errors %}
+                    <p class="error">{% t error %}</p>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.group_code.id_for_label }}">{% t "Шифр группы" %}</label>
+                {{ form.group_code }}
+                {% for error in form.group_code.errors %}
+                    <p class="error">{% t error %}</p>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.study_language.id_for_label }}">{% t "Язык обучения" %}</label>
+                {{ form.study_language }}
+                {% for error in form.study_language.errors %}
+                    <p class="error">{% t error %}</p>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password1.id_for_label }}">{% t "Пароль" %}</label>
+                {{ form.password1 }}
+                {% for error in form.password1.errors %}
+                    <p class="error">{% t error %}</p>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password2.id_for_label }}">{% t "Подтверждение пароля" %}</label>
+                {{ form.password2 }}
+                {% for error in form.password2.errors %}
+                    <p class="error">{% t error %}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% for error in form.non_field_errors %}
+            <p class="error">{% t error %}</p>
+        {% endfor %}
+
+        <button type="submit" style="width: 100%; justify-content: center; margin-top: 10px;">{% t "Зарегистрироваться" %}</button>
+    </form>
+</section>
+{% endblock %}

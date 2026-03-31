@@ -1,0 +1,827 @@
+{
+    "Психологи": {
+        "uz": "Psixologlar",
+        "kk": "Psixologlar",
+        "ru": "Психологи"
+    },
+    "Студенты": {
+        "uz": "Talabalar",
+        "kk": "Studentler",
+        "ru": "Студенты"
+    },
+    "Студент": {
+        "uz": "Talaba",
+        "kk": "Student",
+        "ru": "Студент"
+    },
+    "Назад к статистике": {
+        "uz": "Statistikaga qaytish",
+        "kk": "Statistikaǵa qaytıw",
+        "ru": "Назад к статистике"
+    },
+    "Ответы этого студента не найдены по выбранному опросу.": {
+        "uz": "Tanlangan so'rov bo'yicha bu talabaning javoblari topilmadi.",
+        "kk": "Tańlanǵan sorawnama boyınsha bul studenttiń juwapları tabılmadı.",
+        "ru": "Ответы этого студента не найдены по выбранному опросу."
+    },
+    "Язык обучения": {
+        "uz": "Ta'lim tili",
+        "kk": "Oqıw tili",
+        "ru": "Язык обучения"
+    },
+    "Язык обучения:": {
+        "uz": "Ta'lim tili:",
+        "kk": "Oqıw tili:",
+        "ru": "Язык обучения:"
+    },
+    "Группа / Язык обучения": {
+        "uz": "Guruh / Ta'lim tili",
+        "kk": "Gruppa / Oqıw tili",
+        "ru": "Группа / Язык обучения"
+    },
+    "Создан:": {
+        "uz": "Yaratilgan:",
+        "kk": "Jaratılǵan:",
+        "ru": "Создан:"
+    },
+    "Ответы студента": {
+        "uz": "Talabaning javoblari",
+        "kk": "Studenttiń juwapları",
+        "ru": "Ответы студента"
+    },
+    "Выбранный ответ": {
+        "uz": "Tanlangan javob",
+        "kk": "Tańlanǵan juwap",
+        "ru": "Выбранный ответ"
+    },
+    "Ответов по этому студенту не найдено.": {
+        "uz": "Bu talaba bo'yicha javoblar topilmadi.",
+        "kk": "Bul student boyınsha juwaplar tabılmadı.",
+        "ru": "Ответов по этому студенту не найдено."
+    },
+    "Язык обучения должен быть выбран из UZB, QQ, RUS.": {
+        "uz": "Ta'lim tili UZB, QQ yoki RUS dan tanlanishi kerak.",
+        "kk": "Oqıw tili UZB, QQ yamasa RUS tanlawınan bolıwı kerek.",
+        "ru": "Язык обучения должен быть выбран из UZB, QQ, RUS."
+    },
+    "Система психологических опросов": {
+        "uz": "Psixologik so'rovlar tizimi",
+        "kk": "Psixologiyalıq sorawnamalar sisteması",
+        "ru": "Система психологических опросов"
+    },
+    "Язык": {
+        "uz": "Til",
+        "kk": "Til",
+        "ru": "Язык"
+    },
+    "Главная": {
+        "uz": "Bosh sahifa",
+        "kk": "Bas bet",
+        "ru": "Главная"
+    },
+    "Профиль": {
+        "uz": "Profil",
+        "kk": "Profil",
+        "ru": "Профиль"
+    },
+    "Создать опрос": {
+        "uz": "So'rov yaratish",
+        "kk": "Sorawnama jaratıw",
+        "ru": "Создать опрос"
+    },
+    "Добавить психолога": {
+        "uz": "Psixolog qo'shish",
+        "kk": "Psixolog qosıw",
+        "ru": "Добавить психолога"
+    },
+    "Пользователи": {
+        "uz": "Foydalanuvchilar",
+        "kk": "Paydalanıwshılar",
+        "ru": "Пользователи"
+    },
+    "Выход": {
+        "uz": "Chiqish",
+        "kk": "Shıǵıw",
+        "ru": "Выход"
+    },
+    "Вход": {
+        "uz": "Kirish",
+        "kk": "Kiriw",
+        "ru": "Вход"
+    },
+    "Регистрация": {
+        "uz": "Ro'yxatdan o'tish",
+        "kk": "Dizimnen ótiw",
+        "ru": "Регистрация"
+    },
+    "Система психологических опросов студентов": {
+        "uz": "Talabalar psixologik so'rovlar tizimi",
+        "kk": "Studentlerdiń psixologiyalıq sorawnamalar sisteması",
+        "ru": "Система психологических опросов студентов"
+    },
+    "Имя пользователя": {
+        "uz": "Foydalanuvchi nomi",
+        "kk": "Paydalanıwshı atı",
+        "ru": "Имя пользователя"
+    },
+    "Пароль": {
+        "uz": "Parol",
+        "kk": "Parol",
+        "ru": "Пароль"
+    },
+    "Войти": {
+        "uz": "Kirish",
+        "kk": "Kiriw",
+        "ru": "Войти"
+    },
+    "Нет аккаунта?": {
+        "uz": "Akkauntingiz yo'qmi?",
+        "kk": "Akkauntińız joq pa?",
+        "ru": "Нет аккаунта?"
+    },
+    "Зарегистрироваться": {
+        "uz": "Ro'yxatdan o'tish",
+        "kk": "Dizimnen ótiw",
+        "ru": "Зарегистрироваться"
+    },
+    "Имя": {
+        "uz": "Ism",
+        "kk": "Atı",
+        "ru": "Имя"
+    },
+    "Фамилия": {
+        "uz": "Familiya",
+        "kk": "Familiyası",
+        "ru": "Фамилия"
+    },
+    "Email": {
+        "uz": "Email",
+        "kk": "Email",
+        "ru": "Email"
+    },
+    "Код группы": {
+        "uz": "Guruh kodi",
+        "kk": "Gruppa kodi",
+        "ru": "Код группы"
+    },
+    "Курс": {
+        "uz": "Kurs",
+        "kk": "Kurs",
+        "ru": "Курс"
+    },
+    "Уже есть аккаунт?": {
+        "uz": "Akkauntingiz bormi?",
+        "kk": "Akkauntińız bar ma?",
+        "ru": "Уже есть аккаунт?"
+    },
+    "Опросы": {
+        "uz": "So'rovlar",
+        "kk": "Sorawnamalar",
+        "ru": "Опросы"
+    },
+    "Пройти": {
+        "uz": "O'tish",
+        "kk": "Ótiw",
+        "ru": "Пройти"
+    },
+    "Статистика": {
+        "uz": "Statistika",
+        "kk": "Statistika",
+        "ru": "Статистика"
+    },
+    "Редактировать": {
+        "uz": "Tahrirlash",
+        "kk": "Ózgertiw",
+        "ru": "Редактировать"
+    },
+    "Отправить ответы": {
+        "uz": "Javoblarni yuborish",
+        "kk": "Juwaplardı jiberiw",
+        "ru": "Отправить ответы"
+    },
+    "Редактирование опроса": {
+        "uz": "So'rovni tahrirlash",
+        "kk": "Sorawnamanı ózgertiw",
+        "ru": "Редактирование опроса"
+    },
+    "Название опроса:": {
+        "uz": "So'rov nomi:",
+        "kk": "Sorawnama ataması:",
+        "ru": "Название опроса:"
+    },
+    "Например: Психологическое состояние": {
+        "uz": "Masalan: Psixologik holat",
+        "kk": "Mısalı: Psixologiyalıq jaǵday",
+        "ru": "Например: Психологическое состояние"
+    },
+    "Добавить вопрос": {
+        "uz": "Savol qo'shish",
+        "kk": "Soraw qosıw",
+        "ru": "Добавить вопрос"
+    },
+    "Сохранить опрос": {
+        "uz": "So'rovni saqlash",
+        "kk": "Sorawnamanı saqlaw",
+        "ru": "Сохранить опрос"
+    },
+    "Вопрос": {
+        "uz": "Savol",
+        "kk": "Soraw",
+        "ru": "Вопрос"
+    },
+    "Текст вопроса:": {
+        "uz": "Savol matni:",
+        "kk": "Soraw teksti:",
+        "ru": "Текст вопроса:"
+    },
+    "Варианты ответов:": {
+        "uz": "Javob variantlari:",
+        "kk": "Juwap variantları:",
+        "ru": "Варианты ответов:"
+    },
+    "Введите вариант...": {
+        "uz": "Variantni kiriting...",
+        "kk": "Varianttı kiritiń...",
+        "ru": "Введите вариант..."
+    },
+    "+ Добавить вариант": {
+        "uz": "+ Variant qo'shish",
+        "kk": "+ Variant qosıw",
+        "ru": "+ Добавить вариант"
+    },
+    "Удалить вопрос": {
+        "uz": "Savolni o'chirish",
+        "kk": "Sorawdı óshiriw",
+        "ru": "Удалить вопрос"
+    },
+    "🔴 Красный": {
+        "uz": "🔴 Qizil",
+        "kk": "🔴 Qızıl",
+        "ru": "🔴 Красный"
+    },
+    "🟡 Желтый": {
+        "uz": "🟡 Sariq",
+        "kk": "🟡 Saraw",
+        "ru": "🟡 Желтый"
+    },
+    "🟢 Зеленый": {
+        "uz": "🟢 Yashil",
+        "kk": "🟢 Jasıl",
+        "ru": "🟢 Зеленый"
+    },
+    "Сохранение...": {
+        "uz": "Saqlanmoqda...",
+        "kk": "Saqlanbaqta...",
+        "ru": "Сохранение..."
+    },
+    "Опрос сохранён!": {
+        "uz": "So'rov saqlandi!",
+        "kk": "Sorawnama saqlandı!",
+        "ru": "Опрос сохранён!"
+    },
+    "Укажите название опроса хотя бы на одном языке": {
+        "uz": "So'rov nomini kamida bitta tilda ko'rsating",
+        "kk": "Sorawnama atamasın keminde bir tilde kórsetiń",
+        "ru": "Укажите название опроса хотя бы на одном языке"
+    },
+    "Добавьте хотя бы один вопрос": {
+        "uz": "Kamida bitta savol qo'shing",
+        "kk": "Keminde bir soraw qosıń",
+        "ru": "Добавьте хотя бы один вопрос"
+    },
+    "Заполните текст вопроса хотя бы на одном языке": {
+        "uz": "Savol matnini kamida bitta tilda to'ldiring",
+        "kk": "Soraw tekstin keminde bir tilde toltırıń",
+        "ru": "Заполните текст вопроса хотя бы на одном языке"
+    },
+    "Каждый вопрос должен иметь минимум 2 варианта": {
+        "uz": "Har bir savol kamida 2 ta variantga ega bo'lishi kerak",
+        "kk": "Hár bir sorawdıń keminde 2 variantı bolıwı kerek",
+        "ru": "Каждый вопрос должен иметь минимум 2 варианта"
+    },
+    "Ошибка при сохранении": {
+        "uz": "Saqlashda xatolik",
+        "kk": "Saqlawda qátelik",
+        "ru": "Ошибка при сохранении"
+    },
+    "Удалить этот вопрос?": {
+        "uz": "Bu savolni o'chirasizmi?",
+        "kk": "Bul sorawdı óshiresiz be?",
+        "ru": "Удалить этот вопрос?"
+    },
+    "Всего студентов": {
+        "uz": "Jami talabalar",
+        "kk": "Barlıq studentler",
+        "ru": "Всего студентов"
+    },
+    "Вопросов в опросе": {
+        "uz": "So'rovdagi savollar",
+        "kk": "Sorawnamadaǵı sorawlar",
+        "ru": "Вопросов в опросе"
+    },
+    "Распределение ответов (все студенты):": {
+        "uz": "Javoblar taqsimoti (barcha talabalar):",
+        "kk": "Juwaplardıń bólistiriliwi (barlıq studentler):",
+        "ru": "Распределение ответов (все студенты):"
+    },
+    "Данных пока нет": {
+        "uz": "Hozircha ma'lumot yo'q",
+        "kk": "Házirshe maǵlıwmat joq",
+        "ru": "Данных пока нет"
+    },
+    "Группа риска": {
+        "uz": "Xavf guruhi",
+        "kk": "Qáwip toparı",
+        "ru": "Группа риска"
+    },
+    "Студенты, у которых преобладают красные ответы": {
+        "uz": "Qizil javoblari ko'p bo'lgan talabalar",
+        "kk": "Qızıl juwapları kóp bolǵan studentler",
+        "ru": "Студенты, у которых преобладают красные ответы"
+    },
+    "🔍 Выявить группу риска": {
+        "uz": "🔍 Xavf guruhini aniqlash",
+        "kk": "🔍 Qáwip toparın anıqlaw",
+        "ru": "🔍 Выявить группу риска"
+    },
+    "Выявить группу риска": {
+        "uz": "Xavf guruhini aniqlash",
+        "kk": "Qáwip toparın anıqlaw",
+        "ru": "Выявить группу риска"
+    },
+    "ФИО Студента": {
+        "uz": "Talabaning FISh",
+        "kk": "Studenttiń TAA",
+        "ru": "ФИО Студента"
+    },
+    "Группа / Курс": {
+        "uz": "Guruh / Kurs",
+        "kk": "Gruppa / Kurs",
+        "ru": "Группа / Курс"
+    },
+    "Красных ответов": {
+        "uz": "Qizil javoblar",
+        "kk": "Qızıl juwaplar",
+        "ru": "Красных ответов"
+    },
+    "Статус": {
+        "uz": "Holat",
+        "kk": "Status",
+        "ru": "Статус"
+    },
+    "В группе риска": {
+        "uz": "Xavf guruhida",
+        "kk": "Qáwip toparında",
+        "ru": "В группе риска"
+    },
+    "Студентов в группе риска не обнаружено.": {
+        "uz": "Xavf guruhida talabalar topilmadi.",
+        "kk": "Qáwip toparında studentler tabılmadı.",
+        "ru": "Студентов в группе риска не обнаружено."
+    },
+    "Скрыть": {
+        "uz": "Yashirish",
+        "kk": "Jasırıw",
+        "ru": "Скрыть"
+    },
+    "Нет доступных опросов.": {
+        "uz": "Mavjud so'rovlar yo'q.",
+        "kk": "Miyassar sorawnamalar joq.",
+        "ru": "Нет доступных опросов."
+    },
+    "Доступ разрешен только психологу или суперадмину.": {
+        "uz": "Faqat psixolog yoki superadmin uchun ruxsat berilgan.",
+        "kk": "Tek psixolog yamasa superadmin ushın ruxsat etilgen.",
+        "ru": "Доступ разрешен только психологу или суперадмину."
+    },
+    "Регистрация завершена. Теперь войдите в систему.": {
+        "uz": "Ro'yxatdan o'tish yakunlandi. Endi tizimga kiring.",
+        "kk": "Dizimnen ótiw tamamlandı. Endi sistemaǵa kiriń.",
+        "ru": "Регистрация завершена. Теперь войдите в систему."
+    },
+    "Психолог использует страницу статистики, а не прохождение опроса.": {
+        "uz": "Psixolog so'rovdan o'tish o'rniga statistika sahifasidan foydalanadi.",
+        "kk": "Psixolog sorawnamadan ótiw ornına statistika betin paydalanadı.",
+        "ru": "Психолог использует страницу статистики, а не прохождение опроса."
+    },
+    "В этом опросе пока нет вопросов.": {
+        "uz": "Bu so'rovda hozircha savollar yo'q.",
+        "kk": "Bul sorawnamada házirshe sorawlar joq.",
+        "ru": "В этом опросе пока нет вопросов."
+    },
+    "Ответы успешно сохранены.": {
+        "uz": "Javoblar muvaffaqiyatli saqlandi.",
+        "kk": "Juwaplar tabıslı saqlandı.",
+        "ru": "Ответы успешно сохранены."
+    },
+    "Ответьте на все вопросы.": {
+        "uz": "Barcha savollarga javob bering.",
+        "kk": "Barlıq sorawlarǵa juwap beriń.",
+        "ru": "Ответьте на все вопросы."
+    },
+    "Психолог успешно добавлен!": {
+        "uz": "Psixolog muvaffaqiyatli qo'shildi!",
+        "kk": "Psixolog tabıslı qosıldı!",
+        "ru": "Психолог успешно добавлен!"
+    },
+    "Доступные опросы": {
+        "uz": "Mavjud so'rovlar",
+        "kk": "Miyassar sorawnamalar",
+        "ru": "Доступные опросы"
+    },
+    "Вопросов:": {
+        "uz": "Savollar:",
+        "kk": "Sorawlar:",
+        "ru": "Вопросов:"
+    },
+    "Пройти опрос": {
+        "uz": "So'rovdan o'tish",
+        "kk": "Sorawnamadan ótiw",
+        "ru": "Пройти опрос"
+    },
+    "Опросов пока нет. Психолог может создать их в админ-панели.": {
+        "uz": "Hozircha so'rovlar yo'q. Psixolog ularni admin panelida yaratishi mumkin.",
+        "kk": "Házirshe sorawnamalar joq. Psixolog olardı admin panelinde jarata aladı.",
+        "ru": "Опросов пока нет. Психолог может создать их в админ-панели."
+    },
+    "Удалить опрос?": {
+        "uz": "So'rovni o'chirasizmi?",
+        "kk": "Sorawnamanı óshiresiz be?",
+        "ru": "Удалить опрос?"
+    },
+    "Удалить": {
+        "uz": "O'chirish",
+        "kk": "Óshiriw",
+        "ru": "Удалить"
+    },
+    "ФИО": {
+        "uz": "F.I.Sh.",
+        "kk": "F.A.A.",
+        "ru": "ФИО"
+    },
+    "Логин": {
+        "uz": "Login",
+        "kk": "Login",
+        "ru": "Логин"
+    },
+    "Роль": {
+        "uz": "Rol",
+        "kk": "Ról",
+        "ru": "Роль"
+    },
+    "Действия": {
+        "uz": "Amallar",
+        "kk": "Ámeller",
+        "ru": "Действия"
+    },
+    "Новый пароль (или пусто)": {
+        "uz": "Yangi parol (yoki bo'sh qoldiring)",
+        "kk": "Jańa parol (yamasa bos qaldırıń)",
+        "ru": "Новый пароль (или пусто)"
+    },
+    "Сбросить пароль": {
+        "uz": "Parolni tiklash",
+        "kk": "Paroldi qayta ornatıw",
+        "ru": "Сбросить пароль"
+    },
+    "Пароль пользователя обновлён.": {
+        "uz": "Foydalanuvchi paroli yangilandi.",
+        "kk": "Paydalanıwshı paroli jańalandı.",
+        "ru": "Пароль пользователя обновлён."
+    },
+    "Новый пароль": {
+        "uz": "Yangi parol",
+        "kk": "Jańa parol",
+        "ru": "Новый пароль"
+    },
+    "Некорректный JSON": {
+        "uz": "Noto'g'ri JSON",
+        "kk": "Qáte JSON",
+        "ru": "Некорректный JSON"
+    },
+    "Доступ разрешен только суперадмину.": {
+        "uz": "Ruxsat faqat superadminga berilgan.",
+        "kk": "Ruxsat tek superadminge berilgen.",
+        "ru": "Доступ разрешен только суперадмину."
+    },
+    "Метод не поддерживается.": {
+        "uz": "Bu metod qo'llab-quvvatlanmaydi.",
+        "kk": "Bul metod qollap-quwatlanbaydı.",
+        "ru": "Метод не поддерживается."
+    },
+    "Опрос удалён.": {
+        "uz": "So'rov o'chirildi.",
+        "kk": "Sorawnama óshirildi.",
+        "ru": "Опрос удалён."
+    },
+    "Это поле обязательно.": {
+        "uz": "Bu maydon majburiy.",
+        "kk": "Bul maydan májbúriy.",
+        "ru": "Это поле обязательно."
+    },
+    "Пароли не совпадают.": {
+        "uz": "Parollar mos kelmadi.",
+        "kk": "Parollar sáykes kelmedi.",
+        "ru": "Пароли не совпадают."
+    },
+    "Подтверждение пароля": {
+        "uz": "Parolni tasdiqlash",
+        "kk": "Paroldı tastıyıqlaw",
+        "ru": "Подтверждение пароля"
+    },
+    "E-mail": {
+        "uz": "E-mail",
+        "kk": "E-mail",
+        "ru": "E-mail"
+    },
+    "Все пользователи": {
+        "uz": "Barcha foydalanuvchilar",
+        "kk": "Barlıq paydalanıwshılar",
+        "ru": "Все пользователи"
+    },
+    "Суперадмин": {
+        "uz": "Superadmin",
+        "kk": "Superadmin",
+        "ru": "Суперадмин"
+    },
+    "Психолог": {
+        "uz": "Psixolog",
+        "kk": "Psixolog",
+        "ru": "Психолог"
+    },
+    "Студент": {
+        "uz": "Talaba",
+        "kk": "Student",
+        "ru": "Студент"
+    },
+    "Статистика:": {
+        "uz": "Statistika:",
+        "kk": "Statistika:",
+        "ru": "Статистика:"
+    },
+    "Аналитика:": {
+        "uz": "Tahlil:",
+        "kk": "Analitika:",
+        "ru": "Аналитика:"
+    },
+    "Сохранить": {
+        "uz": "Saqlash",
+        "kk": "Saqlaw",
+        "ru": "Сохранить"
+    },
+    "Регистрация студента": {
+        "uz": "Talaba ro'yxatdan o'tishi",
+        "kk": "Studentti dizimnen ótkeriw",
+        "ru": "Регистрация студента"
+    },
+    "Введите корректный e-mail, например student@example.com": {
+        "uz": "To'g'ri e-mail kiriting, masalan student@example.com",
+        "kk": "Durıs e-mail kiritiń, mısalı student@example.com",
+        "ru": "Введите корректный e-mail, например student@example.com"
+    },
+    "Пример: ИС-23-1": {
+        "uz": "Misol: 111-24",
+        "kk": "Mısal: 111-24",
+        "ru": "Пример: 111-24"
+    },
+    "Выберите курс от 1 до 4": {
+        "uz": "1 dan 4 gacha kursni tanlang",
+        "kk": "1 den 4 ke shekem kursdı tańlań",
+        "ru": "Выберите курс от 1 до 4"
+    },
+    "Введите e-mail, указанный при регистрации": {
+        "uz": "Ro'yxatdan o'tishda ko'rsatilgan e-mailni kiriting",
+        "kk": "Dizimnen ótkende kórsetilgen e-maildi kiritiń",
+        "ru": "Введите e-mail, указанный при регистрации"
+    },
+    "Мой профиль": {
+        "uz": "Mening profilim",
+        "kk": "Meniń profilim",
+        "ru": "Мой профиль"
+    },
+    "Имя пользователя:": {
+        "uz": "Foydalanuvchi nomi:",
+        "kk": "Paydalanıwshı atı:",
+        "ru": "Имя пользователя:"
+    },
+    "Email:": {
+        "uz": "Email:",
+        "kk": "Email:",
+        "ru": "Email:"
+    },
+    "Данные студента": {
+        "uz": "Talaba ma'lumotlari",
+        "kk": "Student maǵlıwmatları",
+        "ru": "Данные студента"
+    },
+    "Шифр группы:": {
+        "uz": "Guruh kodi:",
+        "kk": "Gruppa kodi:",
+        "ru": "Шифр группы:"
+    },
+    "Курс:": {
+        "uz": "Kurs:",
+        "kk": "Kurs:",
+        "ru": "Курс:"
+    },
+    "Вы вошли как психолог": {
+        "uz": "Siz psixolog sifatida kirdingiz",
+        "kk": "Siz psixolog retinde kirdińiz",
+        "ru": "Вы вошли как психолог"
+    },
+    "Вы вошли как суперадмин": {
+        "uz": "Siz superadmin sifatida kirdingiz",
+        "kk": "Siz superadmin retinde kirdińiz",
+        "ru": "Вы вошли как суперадмин"
+    },
+    "Email": {
+        "uz": "Email",
+        "kk": "Email",
+        "ru": "Email"
+    },
+    "Создание опроса": {
+        "uz": "So'rov yaratish",
+        "kk": "Sorawnama jaratıw",
+        "ru": "Создание опроса"
+    },
+    "Опрос недоступен на выбранном языке. Переключите язык на доступный.": {
+        "uz": "So'rov tanlangan tilda mavjud emas. Iltimos, mavjud tilga o'ting.",
+        "kk": "Sorawnama tańlanǵan tilde joq. Múmkin bolǵan tilge ótiń.",
+        "ru": "Опрос недоступен на выбранном языке. Переключите язык на доступный."
+    },
+    "Вы уже прошли этот опрос. Повторное прохождение недоступно.": {
+        "uz": "Siz bu so'rovdan allaqachon o'tgansiz. Qayta topshirish mumkin emas.",
+        "kk": "Siz bul sorawnamadan álleqashan ótken siz. Qayta tapsırıw múmkin emes.",
+        "ru": "Вы уже прошли этот опрос. Повторное прохождение недоступно."
+    },
+    "На текущем языке опрос недоступен.": {
+        "uz": "Joriy tilda so'rov mavjud emas.",
+        "kk": "Aǵımdaǵı tilde sorawnama joq.",
+        "ru": "На текущем языке опрос недоступен."
+    },
+    "Уже пройден": {
+        "uz": "Allaqachon topshirilgan",
+        "kk": "Álleqashan tapsırılǵan",
+        "ru": "Уже пройден"
+    },
+    "Недоступно на этом языке": {
+        "uz": "Bu tilda mavjud emas",
+        "kk": "Bul tilde joq",
+        "ru": "Недоступно на этом языке"
+    },
+    "Список прошедших студентов": {
+        "uz": "So'rovdan o'tgan talabalar ro'yxati",
+        "kk": "Sorawnamadan ótken studentler tizimi",
+        "ru": "Список прошедших студентов"
+    },
+    "Все студенты, которые уже отправили ответы по этому опросу": {
+        "uz": "Ushbu so'rov bo'yicha javob yuborgan barcha talabalar",
+        "kk": "Bul sorawnama boyınsha juwap jibergen barlıq studentler",
+        "ru": "Все студенты, которые уже отправили ответы по этому опросу"
+    },
+    "Желтых ответов": {
+        "uz": "Sariq javoblar",
+        "kk": "Saraw juwaplar",
+        "ru": "Желтых ответов"
+    },
+    "Зеленых ответов": {
+        "uz": "Yashil javoblar",
+        "kk": "Jasıl juwaplar",
+        "ru": "Зеленых ответов"
+    },
+    "Всего ответов": {
+        "uz": "Jami javoblar",
+        "kk": "Barlıq juwaplar",
+        "ru": "Всего ответов"
+    },
+    "Пока никто не прошёл этот опрос.": {
+        "uz": "Hozircha bu so'rovdan hech kim o'tmagan.",
+        "kk": "Házirshe bul sorawnamadan heshkim ótpegen.",
+        "ru": "Пока никто не прошёл этот опрос."
+    },
+    "The two password fields didn’t match.": {
+        "uz": "Ikki parol bir-biriga mos kelmadi.",
+        "kk": "Eki parol bir-birine sáykes kelmedi.",
+        "ru": "Пароли не совпадают."
+    },
+    "Please enter a correct username and password. Note that both fields may be case-sensitive.": {
+        "uz": "To'g'ri login va parolni kiriting. Harflar katta-kichikligiga e'tibor bering.",
+        "kk": "Login hám paroldi durıs kiritiń. Háriplerdiń úlken-kishiligine itibar beriń.",
+        "ru": "Введите правильный логин и пароль. Обратите внимание на регистр символов."
+    },
+    "This field is required.": {
+        "uz": "Bu maydon majburiy.",
+        "kk": "Bul maydan májbúriy.",
+        "ru": "Это поле обязательно."
+    },
+    "A user with that username already exists.": {
+        "uz": "Bunday loginli foydalanuvchi allaqachon mavjud.",
+        "kk": "Munday logini bar paydalanıwshı álleqashan bar.",
+        "ru": "Пользователь с таким логином уже существует."
+    },
+    "О проекте": {
+        "uz": "Loyiha haqida",
+        "kk": "Proekt haqqında",
+        "ru": "О проекте"
+    },
+    "Контакты": {
+        "uz": "Kontaktlar",
+        "kk": "Kontaktlar",
+        "ru": "Контакты"
+    },
+    "Мы в соцсетях": {
+        "uz": "Biz ijtimoiy tarmoqlarda",
+        "kk": "Biz sociallıq tarmaqlarda",
+        "ru": "Мы в соцсетях"
+    },
+    "город Нукус ул. А. Досназарова 74": {
+        "uz": "Nukus shahri A. Dosnazarov ko'chasi 74",
+        "kk": "Nókis qalası A. Dosnazarov kóshesi 74",
+        "ru": "город Нукус ул. А. Досназарова 74"
+    },
+    "Психолог:": {
+        "uz": "Psixolog:",
+        "kk": "Psixolog:",
+        "ru": "Психолог:"
+    },
+    "Максимум баллов": {
+        "uz": "Maksimal ball",
+        "kk": "Maksimal ball",
+        "ru": "Максимум баллов"
+    },
+    "Категория: красный": {
+        "uz": "Toifa: qizil",
+        "kk": "Kategoriya: qızıl",
+        "ru": "Категория: красный"
+    },
+    "Баллы": {
+        "uz": "Ballar",
+        "kk": "Ballar",
+        "ru": "Баллы"
+    },
+    "Максимум": {
+        "uz": "Maksimum",
+        "kk": "Maksimum",
+        "ru": "Максимум"
+    },
+    "Категория": {
+        "uz": "Toifa",
+        "kk": "Kategoriya",
+        "ru": "Категория"
+    },
+    "Студенты с красной категорией (0-50% от максимума)": {
+        "uz": "Qizil toifadagi talabalar (maksimumning 0-50%)",
+        "kk": "Qızıl kategoriyadagı studentler (maksimumnıń 0-50%)",
+        "ru": "Студенты с красной категорией (0-50% от максимума)"
+    },
+    "Поиск студента (ФИО, логин, группа)": {
+        "uz": "Talaba qidirish (F.I.Sh, login, guruh)",
+        "kk": "Student izlew (A.T.A, login, gruppa)",
+        "ru": "Поиск студента (ФИО, логин, группа)"
+    },
+    "Студенты красной категории не найдены.": {
+        "uz": "Qizil toifadagi talabalar topilmadi.",
+        "kk": "Qızıl kategoriyadagı studentler tabılmadı.",
+        "ru": "Студенты красной категории не найдены."
+    },
+    "0 баллов": {
+        "uz": "0 ball",
+        "kk": "0 ball",
+        "ru": "0 баллов"
+    },
+    "1 балл": {
+        "uz": "1 ball",
+        "kk": "1 ball",
+        "ru": "1 балл"
+    },
+    "2 балла": {
+        "uz": "2 ball",
+        "kk": "2 ball",
+        "ru": "2 балла"
+    },
+    "Поиск по названию опроса": {
+        "uz": "So'rov nomi bo'yicha qidirish",
+        "kk": "Sorawnama atı boyınsha izlew",
+        "ru": "Поиск по названию опроса"
+    },
+    "Поиск": {
+        "uz": "Qidirish",
+        "kk": "Izlew",
+        "ru": "Поиск"
+    },
+    "Красная категория": {
+        "uz": "Qizil toifa",
+        "kk": "Qızıl kategoriya",
+        "ru": "Красная категория"
+    },
+    "Желтая категория": {
+        "uz": "Sariq toifa",
+        "kk": "Saraw kategoriya",
+        "ru": "Желтая категория"
+    },
+    "Зеленая категория": {
+        "uz": "Yashil toifa",
+        "kk": "Jasıl kategoriya",
+        "ru": "Зеленая категория"
+    }
+}

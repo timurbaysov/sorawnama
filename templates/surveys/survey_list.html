@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load json_trans %}
+
+{% block title %}{% t "Опросы" %}{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h2>{% t "Доступные опросы" %}</h2>
+    <form method="get" class="search-form search-form-inline">
+        <input type="text" name="q" value="{{ search_query }}" placeholder="{% t 'Поиск по названию опроса' %}" class="search-input">
+        <button type="submit" class="button-link search-button">{% t "Поиск" %}</button>
+    </form>
+    {% if surveys %}
+        <ul class="survey-list">
+            {% for survey in surveys %}
+                <li>
+                    <div>
+                        <h3>{{ survey.localized_title }}</h3>
+                        <p>{% t "Вопросов:" %} {{ survey.questions.count }}</p>
+                        <p style="font-size:.78rem; color:#94a3b8; margin-top:4px;">{% t "Создан:" %} {{ survey.created_at|date:"d.m.Y" }}</p>
+                    </div>
+                    <div class="actions">
+                        {% if user.is_staff or user.is_superuser %}
+                            <a class="button-link" href="{% url 'survey_edit' survey.id %}">{% t "Редактировать" %}</a>
+                            <a class="button-link secondary" href="{% url 'survey_statistics' survey.id %}">{% t "Статистика" %}</a>
+                            <form method="post" action="{% url 'survey_delete' survey.id %}" onsubmit="return confirm('{% t 'Удалить опрос?' %}');" class="inline-form">
+                                {% csrf_token %}
+                                <button type="submit" class="button-link" style="background:#dc2626;">{% t "Удалить" %}</button>
+                            </form>
+                        {% else %}
+                            {% if survey.ui_completed %}
+                                <span class="button-link secondary" style="opacity:.8; cursor:not-allowed;">{% t "Уже пройден" %}</span>
+                            {% elif survey.ui_available_current_lang %}
+                                <a class="button-link" href="{% url 'take_survey' survey.id %}">{% t "Пройти опрос" %}</a>
+                            {% else %}
+                                <span class="button-link secondary" style="opacity:.8; cursor:not-allowed;">{% t "Опрос пуст" %}</span>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>{% t "Опросов пока нет. Психолог может создать их в админ-панели." %}</p>
+    {% endif %}
+</section>
+{% endblock %}

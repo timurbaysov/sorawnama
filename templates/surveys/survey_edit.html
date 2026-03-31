@@ -1,0 +1,437 @@
+{% extends "base.html" %}
+{% load json_trans static %}
+
+{% block title %}
+    {% if is_create %}{% t "Создание опроса" %}{% else %}{% t "Редактирование опроса" %}{% endif %}
+{% endblock %}
+
+{% block content %}
+<section class="survey-editor">
+    <h2>
+        {% if is_create %}{% t "Создание опроса" %}{% else %}{% t "Редактирование опроса" %}{% endif %}
+    </h2>
+
+    <!-- Language Tabs -->
+    <div class="lang-tabs-container">
+        <div class="lang-buttons">
+            <button type="button" class="lang-btn" data-lang="uz" onclick="switchLang('uz')">UZ</button>
+            <button type="button" class="lang-btn" data-lang="kk" onclick="switchLang('kk')">KK</button>
+            <button type="button" class="lang-btn active" data-lang="ru" onclick="switchLang('ru')">RU</button>
+        </div>
+    </div>
+
+    <!-- Survey Title -->
+    <div class="editor-section">
+        <label id="title-label">{% t "Название опроса:" %}</label>
+        <input type="text" id="survey-title" class="title-input" placeholder="{% t 'Например: Психологическое состояние' %}">
+    </div>
+
+    <hr class="divider">
+
+    <!-- Questions Container -->
+    <div id="questions-container"></div>
+
+    <!-- Add Question -->
+    <button type="button" class="btn-add-question-large" onclick="addQuestion()">
+        ➕ {% t "Добавить вопрос" %}
+    </button>
+
+    <div class="save-container">
+        <!-- Save -->
+        <button type="button" id="save-btn" class="btn-save-full" onclick="saveSurvey()">
+            {% t "Сохранить опрос" %}
+        </button>
+    </div>
+</section>
+
+<style>
+/* ... стили остаются без изменений ... */
+    .lang-tabs-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    .lang-buttons {
+        display: flex;
+        gap: 10px;
+    }
+    .lang-btn {
+        background: #f1f5f9 !important;
+        color: #475569 !important;
+        border: 1px solid #e2e8f0 !important;
+        padding: 10px 25px !important;
+        font-weight: 700 !important;
+        border-radius: 8px !important;
+        cursor: pointer;
+        transition: all 0.2s !important;
+        box-shadow: none !important;
+    }
+    .lang-btn:hover {
+        background: #e2e8f0 !important;
+        transform: none !important;
+    }
+    .lang-btn.active {
+        background: #10b981 !important;
+        color: white !important;
+        border-color: #10b981 !important;
+    }
+    .title-input {
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+        padding: 15px !important;
+        border: 2px solid #e2e8f0 !important;
+    }
+    .divider {
+        border: 0;
+        border-top: 1px solid #e2e8f0;
+        margin: 30px 0;
+    }
+    .question-card {
+        border: 1px solid #e2e8f0 !important;
+        border-left: 6px solid #10b981 !important;
+        background: white !important;
+        padding: 25px !important;
+        margin-bottom: 25px !important;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
+    }
+    .question-card-header h3 {
+        font-size: 1.1rem !important;
+        color: #1e293b !important;
+    }
+    .option-row {
+        background: #f8fafc;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    .opt-text-input {
+        border: 1px solid #cbd5e1 !important;
+        padding: 8px 12px !important;
+    }
+    .opt-value-select {
+        border: 1px solid #cbd5e1 !important;
+        font-weight: 600 !important;
+    }
+    .btn-add-option {
+        margin-top: 10px;
+        color: #10b981 !important;
+        font-weight: 600 !important;
+        border: 1px dashed #10b981 !important;
+        background: transparent !important;
+        width: 100%;
+        justify-content: center;
+    }
+    .btn-add-question-large {
+        width: 100%;
+        padding: 15px !important;
+        background: #f8fafc !important;
+        color: #10b981 !important;
+        border: 2px dashed #cbd5e1 !important;
+        font-size: 1.1rem !important;
+        font-weight: 700 !important;
+        margin: 20px 0 40px 0 !important;
+        cursor: pointer;
+    }
+    .btn-add-question-large:hover {
+        background: #f0fdf4 !important;
+        border-color: #10b981 !important;
+    }
+    .save-container {
+        position: sticky;
+        bottom: 20px;
+        background: rgba(255,255,255,0.8);
+        padding: 15px;
+        backdrop-filter: blur(8px);
+        border-radius: 12px;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+    }
+    .btn-save-full {
+        width: 100%;
+        padding: 18px !important;
+        background: #10b981 !important;
+        color: white !important;
+        font-size: 1.2rem !important;
+        font-weight: 700 !important;
+        border-radius: 10px !important;
+    }
+</style>
+
+<script>
+// ===== Translations =====
+const L = {
+    question: "{% t 'Вопрос' %}",
+    questionText: "{% t 'Текст вопроса:' %}",
+    options: "{% t 'Варианты ответов:' %}",
+    optionPlaceholder: "{% t 'Введите вариант...' %}",
+    addOption: "{% t '+ Добавить вариант' %}",
+    deleteQuestion: "{% t 'Удалить вопрос' %}",
+    delete: "{% t 'Удалить' %}",
+    level0: "{% t '0 баллов' %}",
+    level1: "{% t '1 балл' %}",
+    level2: "{% t '2 балла' %}",
+    saving: "{% t 'Сохранение...' %}",
+    saved: "{% t 'Опрос сохранён!' %}",
+    errTitle: "{% t 'Укажите название опроса хотя бы на одном языке' %}",
+    errNoQuestions: "{% t 'Добавьте хотя бы один вопрос' %}",
+    errQuestionText: "{% t 'Заполните текст вопроса хотя бы на одном языке' %}",
+    errOptions: "{% t 'Каждый вопрос должен иметь минимум 2 варианта' %}",
+    errSave: "{% t 'Ошибка при сохранении' %}",
+};
+
+// ===== State =====
+let currentLang = 'uz';
+const existingData = {{ survey_json|safe }};
+
+const state = {
+    title: { uz: '', kk: '', ru: '' },
+    questions: []
+};
+
+function makeOption(value) {
+    return { id: null, text: { uz: '', kk: '', ru: '' }, value: value || 1 };
+}
+
+function makeQuestion() {
+    return {
+        id: null,
+        text: { uz: '', kk: '', ru: '' },
+        options: [ makeOption(1), makeOption(2), makeOption(3) ]
+    };
+}
+
+// ===== Init =====
+function init() {
+    if (existingData) {
+        state.title = existingData.title || { uz: '', kk: '', ru: '' };
+        state.questions = (existingData.questions || []).map(q => ({
+            id: q.id || null,
+            text: q.text || { uz: '', kk: '', ru: '' },
+            options: (q.options || []).map(o => ({
+                id: o.id || null,
+                text: o.text || { uz: '', kk: '', ru: '' },
+                value: o.value || 1,
+            }))
+        }));
+    }
+    if (state.questions.length === 0) {
+        state.questions.push(makeQuestion());
+    }
+    render();
+}
+
+// ===== Sync DOM → State =====
+function syncFromDOM() {
+    const lang = currentLang;
+    const titleEl = document.getElementById('survey-title');
+    if (titleEl) state.title[lang] = titleEl.value;
+
+    document.querySelectorAll('.question-card').forEach((card, qi) => {
+        if (!state.questions[qi]) return;
+        const textInput = card.querySelector('.q-text-input');
+        if (textInput) state.questions[qi].text[lang] = textInput.value;
+
+        card.querySelectorAll('.option-row').forEach((row, oi) => {
+            if (!state.questions[qi].options[oi]) return;
+            const optText = row.querySelector('.opt-text-input');
+            const optVal = row.querySelector('.opt-value-select');
+            if (optText) state.questions[qi].options[oi].text[lang] = optText.value;
+            if (optVal) state.questions[qi].options[oi].value = parseInt(optVal.value);
+        });
+    });
+}
+
+// ===== Render =====
+function render() {
+    const lang = currentLang;
+
+    // Title
+    document.getElementById('survey-title').value = state.title[lang] || '';
+
+    // Tabs
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    // Questions
+    const container = document.getElementById('questions-container');
+    container.innerHTML = '';
+
+    state.questions.forEach((q, qi) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+
+        let optionsHTML = '';
+        q.options.forEach((opt, oi) => {
+            optionsHTML += `
+                <div class="option-row">
+                    <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+                        <input type="text" class="opt-text-input" value="${escapeAttr(opt.text[lang] || '')}"
+                               placeholder="${L.optionPlaceholder}"
+                               oninput="onOptText(${qi}, ${oi}, this.value)">
+                        <select class="opt-value-select" onchange="onOptValue(${qi}, ${oi}, this.value)">
+                            <option value="1" ${opt.value===1?'selected':''}>${L.level0}</option>
+                            <option value="2" ${opt.value===2?'selected':''}>${L.level1}</option>
+                            <option value="3" ${opt.value===3?'selected':''}>${L.level2}</option>
+                        </select>
+                        <button type="button" class="btn-delete-option" onclick="deleteOption(${qi}, ${oi})"
+                                title="${L.delete}">❌</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        card.innerHTML = `
+            <div class="question-card-header">
+                <h3>📋 ${L.question} ${qi + 1}:</h3>
+                <button type="button" class="btn-delete-question" onclick="deleteQuestion(${qi})">
+                    🗑 ${L.deleteQuestion}
+                </button>
+            </div>
+            <div class="form-group">
+                <label>${L.questionText}</label>
+                <input type="text" class="q-text-input" value="${escapeAttr(q.text[lang] || '')}"
+                       placeholder="${L.question}..."
+                       oninput="onQText(${qi}, this.value)">
+            </div>
+            <div class="options-section">
+                <div class="options-section-title">${L.options}</div>
+                ${optionsHTML}
+                <button type="button" class="btn-add-option" onclick="addOption(${qi})">
+                    ${L.addOption}
+                </button>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// ===== Inline handlers (avoid full re-render) =====
+function onQText(qi, val) { state.questions[qi].text[currentLang] = val; }
+function onOptText(qi, oi, val) { state.questions[qi].options[oi].text[currentLang] = val; }
+function onOptValue(qi, oi, val) {
+    state.questions[qi].options[oi].value = parseInt(val);
+}
+
+// ===== Actions =====
+function switchLang(lang) {
+    syncFromDOM();
+    currentLang = lang;
+    render();
+}
+
+function addQuestion() {
+    syncFromDOM();
+    state.questions.push(makeQuestion());
+    render();
+    // Scroll to new question
+    setTimeout(() => {
+        const cards = document.querySelectorAll('.question-card');
+        if (cards.length) cards[cards.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 50);
+}
+
+function deleteQuestion(qi) {
+    if (confirm("{% t 'Удалить этот вопрос?' %}")) {
+        syncFromDOM();
+        state.questions.splice(qi, 1);
+        render();
+    }
+}
+
+function addOption(qi) {
+    syncFromDOM();
+    state.questions[qi].options.push(makeOption(1));
+    render();
+}
+
+function deleteOption(qi, oi) {
+    syncFromDOM();
+    state.questions[qi].options.splice(oi, 1);
+    render();
+}
+
+// ===== Save =====
+function saveSurvey() {
+    syncFromDOM();
+
+    // Validate
+    const hasTitle = state.title.uz || state.title.kk || state.title.ru;
+    if (!hasTitle) return alert(L.errTitle);
+    if (state.questions.length === 0) return alert(L.errNoQuestions);
+    for (let qi = 0; qi < state.questions.length; qi++) {
+        const q = state.questions[qi];
+        if (!q.text.uz && !q.text.kk && !q.text.ru) return alert(L.errQuestionText + ` (${L.question} ${qi+1})`);
+        if (q.options.length < 2) return alert(L.errOptions + ` (${L.question} ${qi+1})`);
+    }
+
+    // Build payload
+    const payload = {
+        title_uz: state.title.uz,
+        title_kk: state.title.kk,
+        title_ru: state.title.ru,
+        questions: state.questions.map(q => ({
+            id: q.id,
+            text_uz: q.text.uz,
+            text_kk: q.text.kk,
+            text_ru: q.text.ru,
+            options: q.options.map(o => ({
+                id: o.id,
+                text_uz: o.text.uz,
+                text_kk: o.text.kk,
+                text_ru: o.text.ru,
+                value: o.value,
+            }))
+        }))
+    };
+
+    const btn = document.getElementById('save-btn');
+    btn.disabled = true;
+    const oldText = btn.textContent;
+    btn.textContent = L.saving;
+
+    fetch(window.location.href, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: JSON.stringify(payload),
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.status === 'ok') {
+            window.location.href = data.redirect;
+        } else {
+            alert(data.message || L.errSave);
+            btn.disabled = false;
+            btn.textContent = oldText;
+        }
+    })
+    .catch(() => {
+        alert(L.errSave);
+        btn.disabled = false;
+        btn.textContent = oldText;
+    });
+}
+
+// ===== Helpers =====
+function escapeAttr(s) {
+    if (!s) return "";
+    return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function getCookie(name) {
+    let v = null;
+    if (document.cookie) {
+        for (const c of document.cookie.split(';')) {
+            const t = c.trim();
+            if (t.startsWith(name + '=')) { v = decodeURIComponent(t.substring(name.length + 1)); break; }
+        }
+    }
+    return v;
+}
+
+// ===== Start =====
+init();
+</script>
+{% endblock %}
